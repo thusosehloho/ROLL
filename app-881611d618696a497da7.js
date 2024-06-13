@@ -6009,6 +6009,19 @@
 	
 	            $scope.showMap = function () {
 					alert("hello lekae")
+                          if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+  alert("latitude :"+latitude+" longitude :"+longitude);
+	  $("#lat").innerHTML = latitude;
+    $("#lon").innerHTML = longitude;  
+  });
+} else {
+  console.log("Geolocation is not supported by this browser.");
+}
+			    
 	                /*var _geoJson = geometryHasValue() ? angular.copy($scope.geometry) : null;
 	                if (_geoJson) {
 	                    delete _geoJson.coordinate;
